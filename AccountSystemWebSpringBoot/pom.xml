@@ -5,27 +5,43 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>za.ac.nwu</groupId>
+        <groupId>za.ac.nwu.ac</groupId>
         <artifactId>AccountSystem</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>AccountSystemWeb</artifactId>
+    <artifactId>AccountSystemWebSpringBoot</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>za.ac.nwu</groupId>
+            <groupId>za.ac.nwu.ac</groupId>
             <artifactId>AccountSystemDomain</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>za.ac.nwu</groupId>
+            <groupId>za.ac.nwu.ac</groupId>
             <artifactId>AccountSystemLogic</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
