@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,6 +10,7 @@
         <module name="AccountSystemDomain" />
         <module name="AccountSystemTranslator" />
         <module name="AccountSystemLogic" />
+        <module name="DatabaseRepository" />
         <module name="AccountSystemWebSpringBoot" />
         <module name="AccountSystemRepository" />
       </profile>
@@ -21,6 +23,7 @@
       <module name="AccountSystemRepository" options="-parameters" />
       <module name="AccountSystemTranslator" options="-parameters" />
       <module name="AccountSystemWebSpringBoot" options="-parameters" />
+      <module name="DatabaseRepository" options="-parameters" />
     </option>
   </component>
 </project>

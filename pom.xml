@@ -30,6 +30,7 @@
         <module>AccountSystemRepository</module>
         <module>AccountSystemTranslator</module>
         <module>AccountSystemWebSpringBoot</module>
+        <module>DatabaseRepository</module>
     </modules>
 
     <dependencyManagement>
@@ -69,6 +70,11 @@
                         <artifactId>slf4j-api</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc7</artifactId>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
