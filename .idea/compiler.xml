@@ -12,9 +12,11 @@
         <module name="AccountSystemLogic" />
         <module name="DatabaseRepository" />
         <module name="AccountSystemWebSpringBoot" />
-        <module name="AccountSystemRepository" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AccountSystemRepository" target="8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
