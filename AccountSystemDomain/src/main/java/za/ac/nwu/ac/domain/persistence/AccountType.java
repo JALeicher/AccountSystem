@@ -14,8 +14,8 @@ public class AccountType implements Serializable {
     @Id
     @SequenceGenerator(name="Generic_Sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Generic_Sequence")
-    @Column(name = "accounType_Id")
-    private Long accounTypeId;
+    @Column(name = "accountType_Id")
+    private Long accountTypeId;
 
     @Column(name = "mnemonic")
     private String mnemonic;
@@ -27,7 +27,7 @@ public class AccountType implements Serializable {
     private long memberId;
 
     @Column(name = "Amount")
-    private long amoount;
+    private long amount;
 
     @Column(name = "Add_Date")
     private LocalDate addDate;
@@ -35,12 +35,12 @@ public class AccountType implements Serializable {
     public AccountType() {
     }
 
-    public AccountType(Long accounTypeId, String mnemonic, String accountTypeName, long memberId, long amoount, LocalDate addDate) {
-        this.accounTypeId = accounTypeId;
+    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, long memberId, long amount, LocalDate addDate) {
+        this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
         this.memberId = memberId;
-        this.amoount = amoount;
+        this.amount = amount;
         this.addDate = addDate;
     }
 }

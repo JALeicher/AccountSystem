@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import za.ac.nwu.ac.domain.service.Response;
 
 @RestController
-@RequestMapping("Account-Type")
+@RequestMapping("AccountType")
 public class AccountController {
 
     @GetMapping("/all")
