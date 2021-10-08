@@ -1,5 +1,6 @@
 package za.ac.nwu.ac.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 import javax.persistence.*;
@@ -27,11 +28,11 @@ public class AccountTypeDto implements Serializable {
     }
 
     @ApiModelProperty(position = 1,
-            value = "AccountMnemonic",
-            name="",
+            value = "Account Mnemonic",
+            name="Mnemonic",
             notes = "",
-            dataType = "",
-            example = "",
+            dataType = "java.lang.Static",
+            example = "KM",
             allowEmptyValue = false,
             required = true)
     public String getMnemonic() {
@@ -43,11 +44,11 @@ public class AccountTypeDto implements Serializable {
     }
 
     @ApiModelProperty(position = 2,
-            value = "AccountTypeName",
-            name="",
+            value = "AccountType Name",
+            name="Name",
             notes = "",
-            dataType = "",
-            example = "",
+            dataType = "java.lang.String",
+            example = "kilometers",
             allowEmptyValue = false,
             required = true)
     public String getAccountTypeName() {
@@ -58,15 +59,14 @@ public class AccountTypeDto implements Serializable {
         this.accountTypeName = accountTypeName;
     }
 
-
     @ApiModelProperty(position = 3,
-            value = "CreationDate",
-            name="",
+            value = "AccountTye CreationDate",
+            name="CreationDate",
             notes = "",
-            dataType = "",
-            example = "",
-            allowEmptyValue = false,
-            required = true)
+            dataType = "java.lang.String",
+            example = "2020-01-01",
+            allowEmptyValue = true,
+            required = false)
 
     public LocalDate getCreationDate() {
         return creationDate;
@@ -76,6 +76,7 @@ public class AccountTypeDto implements Serializable {
         this.creationDate = creationDate;
     }
 
+    @JsonIgnore
     public AccountType getAccountType(){
         return new AccountType(getMnemonic(),getAccountTypeName(),getCreationDate());
     }
