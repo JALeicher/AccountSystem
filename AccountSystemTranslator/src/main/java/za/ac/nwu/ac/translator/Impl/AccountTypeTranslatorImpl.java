@@ -2,15 +2,15 @@ package za.ac.nwu.ac.translator.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
+import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.repo.persistence.AccountTypeRepo;
 import za.ac.nwu.ac.translator.AccountTypeTranslator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Transactional
+
 @Component
 public class AccountTypeTranslatorImpl implements AccountTypeTranslator{
 
@@ -26,11 +26,11 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator{
 
         List<AccountTypeDto> accountTypeDtoList = new ArrayList<AccountTypeDto>();
         try {
-            for (AccountTypeDto x :accountTypeRepo.findAll()) accountTypeDtoList.add(new AccountTypeDto(x));
+            for (AccountType x :accountTypeRepo.findAll())accountTypeDtoList.add(new AccountTypeDto(x));
         }
         catch(Exception error){
             throw new RuntimeException("THIS IS FUCKED");
         }
-        return null;
+        return accountTypeDtoList;
     }
 }

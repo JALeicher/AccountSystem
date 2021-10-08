@@ -30,17 +30,17 @@ public class AccountType implements Serializable {
     private long amount;
 
     @Column(name = "Add_Date")
-    private LocalDate addDate;
+    private LocalDate CreationDate;
 
     public AccountType() {
     }
 
-    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, long memberId, long amount, LocalDate addDate) {
+    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, long memberId, long amount, LocalDate creationDate) {
         this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
         this.memberId = memberId;
         this.amount = amount;
-        this.addDate = addDate;
+        this.CreationDate = creationDate;
     }
 }

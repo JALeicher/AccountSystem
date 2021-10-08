@@ -7,16 +7,16 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.service.Response;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFlow;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("account-type")
 public class AccountController {
 

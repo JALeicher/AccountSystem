@@ -9,7 +9,6 @@ import za.ac.nwu.ac.translator.AccountTypeTranslator;
 
 import java.util.List;
 
-@Transactional
 @Component
 public class FetchAccountTypeFlowImpl implements FetchAccountTypeFlow
 {
