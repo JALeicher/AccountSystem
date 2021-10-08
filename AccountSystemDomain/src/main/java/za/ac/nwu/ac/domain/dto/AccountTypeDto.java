@@ -1,11 +1,15 @@
 package za.ac.nwu.ac.domain.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.AccountType;
-
+import javax.persistence.*;
+import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-
+@ApiModel(value = "AccountType",
+    description = "Data Transfer Object for AccountType Entity"
+)
 public class AccountTypeDto implements Serializable {
 
     private String accountTypeName;
@@ -17,17 +21,52 @@ public class AccountTypeDto implements Serializable {
 
     public AccountTypeDto(AccountType accountType) {
         this.setAccountTypeName(accountType.getAccountTypeName());
-        this.setMnemonic(accountType.getMnemonic());
         this.setCreationDate(accountType.getCreationDate());
+        this.setMnemonic(accountType.getMnemonic());
+
     }
 
+    @ApiModelProperty(position = 1,
+            value = "AccountMnemonic",
+            name="",
+            notes = "",
+            dataType = "",
+            example = "",
+            allowEmptyValue = false,
+            required = true)
+    public String getMnemonic() {
+        return mnemonic;
+    }
+
+    public void setMnemonic(String mnemonic) {
+        this.mnemonic = mnemonic;
+    }
+
+    @ApiModelProperty(position = 2,
+            value = "AccountTypeName",
+            name="",
+            notes = "",
+            dataType = "",
+            example = "",
+            allowEmptyValue = false,
+            required = true)
     public String getAccountTypeName() {
         return accountTypeName;
     }
 
-    public String getMnemonic() {
-        return mnemonic;
+    public void setAccountTypeName(String accountTypeName) {
+        this.accountTypeName = accountTypeName;
     }
+
+
+    @ApiModelProperty(position = 3,
+            value = "CreationDate",
+            name="",
+            notes = "",
+            dataType = "",
+            example = "",
+            allowEmptyValue = false,
+            required = true)
 
     public LocalDate getCreationDate() {
         return creationDate;
@@ -37,12 +76,8 @@ public class AccountTypeDto implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public void setMnemonic(String mnemonic) {
-        this.mnemonic = mnemonic;
-    }
-
-    public void setAccountTypeName(String accountTypeName) {
-        this.accountTypeName = accountTypeName;
+    public AccountType getAccountType(){
+        return new AccountType(getMnemonic(),getAccountTypeName(),getCreationDate());
     }
 
     @Override

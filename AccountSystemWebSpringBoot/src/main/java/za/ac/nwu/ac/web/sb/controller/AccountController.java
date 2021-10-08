@@ -1,17 +1,17 @@
 package za.ac.nwu.ac.web.sb.controller;
 
 
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.service.Response;
+import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFlow;
 
 import java.util.List;
@@ -21,10 +21,12 @@ import java.util.List;
 public class AccountController {
 
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
+    private final CreateAccountTypeFlow createAccountTypeFlow;
 
     @Autowired
-    public AccountController(FetchAccountTypeFlow accountTypeFlow){
+    public AccountController(FetchAccountTypeFlow accountTypeFlow, CreateAccountTypeFlow createAccountTypeFlow){
         this.fetchAccountTypeFlow =accountTypeFlow;
+        this.createAccountTypeFlow = createAccountTypeFlow;
     }
 
     @GetMapping("/all")
@@ -38,5 +40,20 @@ public class AccountController {
         List<AccountTypeDto> accountTypeDtoList = fetchAccountTypeFlow.getAllAccountTypes();
         Response<List<AccountTypeDto>> response = new Response<List<AccountTypeDto>>(true,accountTypeDtoList);
         return new ResponseEntity<>(response,HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    @ApiOperation(value = "Creates a new Account Type", notes = "Whatever")
+    @ApiResponses(value ={
+            @ApiResponse(code = 201, message = "AccountType Created YAY", response = Response.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = Response.class),
+            @ApiResponse(code = 500, message = "Internal server error", response = Response.class)
+    })
+    public ResponseEntity<Response<AccountTypeDto>> CreateAccountType(
+            @ApiParam(value = "Requestbody to create new AccountType", required = true)
+            @RequestBody AccountTypeDto accountTypeDto){
+        AccountTypeDto accountResponse = createAccountTypeFlow.CreateAccountType(accountTypeDto);
+        Response<AccountTypeDto> response = new Response<>(true,accountResponse);
+        return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
 }

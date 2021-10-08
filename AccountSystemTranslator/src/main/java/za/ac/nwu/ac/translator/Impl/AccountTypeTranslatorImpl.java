@@ -33,4 +33,15 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator{
         }
         return accountTypeDtoList;
     }
+
+    @Override
+    public AccountTypeDto CreateAccountType(AccountTypeDto accountTypeDto) {
+        try {
+                AccountType accountType = accountTypeRepo.save(accountTypeDto.getAccountType());
+                return new AccountTypeDto(accountType);
+        }
+        catch (Exception e){
+            throw new RuntimeException("Cannot save to DB");
+        }
+    }
 }
