@@ -1,2 +1,3 @@
 za/ac/nwu/ac/domain/persistence/AccountType.class
+za/ac/nwu/ac/domain/dto/AccountTypeDto.class
 za/ac/nwu/ac/domain/service/Response.class
