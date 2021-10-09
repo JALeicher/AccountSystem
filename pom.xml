@@ -29,7 +29,7 @@
         <module>AccountSystemLogic</module>
         <module>AccountSystemTranslator</module>
         <module>AccountSystemWebSpringBoot</module>
-        <module>DatabaseRepository</module>
+        <module>AccountSystemRepository</module>
     </modules>
 
     <dependencyManagement>

@@ -1,3 +1,5 @@
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemDomain/src/main/java/za/ac/nwu/ac/domain/dto/AccountTypeDto.java
+/Users/master/Documents/GitHub/AccountSystem/AccountSystemDomain/src/main/java/za/ac/nwu/ac/domain/dto/CurrencyDto.java
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemDomain/src/main/java/za/ac/nwu/ac/domain/persistence/AccountType.java
+/Users/master/Documents/GitHub/AccountSystem/AccountSystemDomain/src/main/java/za/ac/nwu/ac/domain/persistence/Currency.java
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemDomain/src/main/java/za/ac/nwu/ac/domain/service/Response.java
