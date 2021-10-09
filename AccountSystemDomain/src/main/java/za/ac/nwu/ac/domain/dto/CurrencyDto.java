@@ -1,6 +1,7 @@
 package za.ac.nwu.ac.domain.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.Currency;
@@ -72,6 +73,11 @@ public class CurrencyDto implements Serializable {
 
     public void setExchangeRate(float exchangeRate) {
         this.exchangeRate = exchangeRate;
+    }
+
+    @JsonIgnore
+    public Currency getCurrency(){
+        return new Currency(this.getCurrencyName(),this.getCurrencySymbol(),this.getExchangeRate());
     }
 
     @Override

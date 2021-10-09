@@ -15,7 +15,7 @@ public class Account implements Serializable{
     @Id
     @SequenceGenerator(name="Generic_Sequence",allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Generic_Sequence")
-    @Column(name = "accountType_Id")
+    @Column(name = "account_Id")
     private Long accountId;
 
     @Column(name = "Account_First_Name")
@@ -27,9 +27,16 @@ public class Account implements Serializable{
     @Column(name = "Account_Email")
     private String accountEMail;
 
-    @ManyToOne
-    @JoinColumn(name = "Account_currency")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Account_currency",nullable = false)
     private Currency accountCurrency;
+
+    public Currency getAccountCurrency() {
+        return accountCurrency;
+    }
+
+    public Account() {
+    }
 
     public Account(String accountFName, String accountLName, String accountEMail, Currency accountCurrency) {
         this.accountFName = accountFName;

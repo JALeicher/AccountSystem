@@ -33,4 +33,6 @@ public class Currency implements Serializable{
         this.currencySymbol = currencySymbol;
         this.exchangeRate = exchangeRate;
     }
+
+
 }

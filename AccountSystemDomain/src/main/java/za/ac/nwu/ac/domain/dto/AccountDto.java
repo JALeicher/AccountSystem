@@ -1,5 +1,6 @@
 package za.ac.nwu.ac.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.Account;
@@ -88,5 +89,20 @@ public class AccountDto {
 
     public void setAccountCurrency(String accountCurrency) {
         this.accountCurrency = accountCurrency;
+    }
+
+    @JsonIgnore
+    public Account BuildAccount(Currency currency){
+        return new Account(this.getAccountFName(),this.getAccountLName(),this.getAccountEMail(), currency);
+    }
+
+    @Override
+    public String toString() {
+        return "AccountDto{" +
+                "accountFName='" + accountFName + '\'' +
+                ", accountLName='" + accountLName + '\'' +
+                ", accountEMail='" + accountEMail + '\'' +
+                ", accountCurrency='" + accountCurrency + '\'' +
+                '}';
     }
 }
