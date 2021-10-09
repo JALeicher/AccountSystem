@@ -32,7 +32,7 @@ public class AccountController {
     @GetMapping("/all")
     @ApiOperation(value ="Gets all the configured account types", notes = "gets a list of all account types")
     @ApiResponses(value={
-            @ApiResponse(code = 200, message = "Account types returned", response = Response.class),
+            @ApiResponse(code = 201, message = "Account types returned", response = Response.class),
             @ApiResponse(code = 400, message = "Bad Request", response = Response.class),
             @ApiResponse(code = 404, message = "Not found", response = Response.class),
             @ApiResponse(code = 500, message = "Internal server error", response = Response.class)})
@@ -42,7 +42,7 @@ public class AccountController {
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping("/create")
     @ApiOperation(value = "Creates a new Account Type", notes = "Whatever")
     @ApiResponses(value ={
             @ApiResponse(code = 201, message = "AccountType Created YAY", response = Response.class),
@@ -56,4 +56,23 @@ public class AccountController {
         Response<AccountTypeDto> response = new Response<>(true,accountResponse);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
+
+    @GetMapping("{date}")
+    @ApiOperation(value = "Creates a new Account Type", notes = "Whatever")
+    @ApiResponses(value ={
+            @ApiResponse(code = 201, message = "AccountType Created YAY", response = Response.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = Response.class),
+            @ApiResponse(code = 404, message = "Resource not found", response = Response.class),
+            @ApiResponse(code = 500, message = "Internal server error", response = Response.class)
+    })
+    public ResponseEntity<Response<List<AccountTypeDto>>> FetchByDate(
+            @ApiParam(value = "The date on which the account types were created",
+            example = "2020-01-01",
+            name="date",
+            required = true)
+            @PathVariable("date") final String date){
+        List<AccountTypeDto> accountTypeDtoList = fetchAccountTypeFlow.getAllAccountTypesByDate(date);
+        Response<List<AccountTypeDto>> response = new Response<>(true,accountTypeDtoList);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+    };
 }

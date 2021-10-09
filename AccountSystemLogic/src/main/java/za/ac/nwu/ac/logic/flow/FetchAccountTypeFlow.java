@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface FetchAccountTypeFlow {
     List<AccountTypeDto> getAllAccountTypes();
+    List<AccountTypeDto> getAllAccountTypesByDate(String date);
 }

@@ -9,4 +9,6 @@ public interface AccountTypeTranslator {
     List<AccountTypeDto>getAllAccountTypes();
 
     AccountTypeDto CreateAccountType(AccountTypeDto accountTypeDto);
+
+    List<AccountTypeDto> FetchAccountsByDate(String date);
 }

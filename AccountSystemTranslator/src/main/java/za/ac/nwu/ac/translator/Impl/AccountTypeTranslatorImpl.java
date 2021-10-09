@@ -7,7 +7,9 @@ import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.repo.persistence.AccountTypeRepo;
 import za.ac.nwu.ac.translator.AccountTypeTranslator;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -43,5 +45,22 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator{
         catch (Exception e){
             throw new RuntimeException("Cannot save to DB");
         }
+    }
+
+    @Override
+    public List<AccountTypeDto> FetchAccountsByDate(String date) {
+        Collection<AccountType> accountTypeList;
+        List<AccountTypeDto> accountTypeDtoList = new ArrayList<>();
+        try {
+            accountTypeList = accountTypeRepo.FetchAccountsByDate(LocalDate.parse(date));
+            for (AccountType i: accountTypeList) {
+                accountTypeDtoList.add(new AccountTypeDto(i));
+            }
+
+        }
+        catch (Exception e){
+            throw new RuntimeException("Cannot execute query");
+        }
+        return accountTypeDtoList;
     }
 }

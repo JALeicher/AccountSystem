@@ -8,8 +8,8 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Entity
-@Table(name="DemoType")
+@Entity(name = "AccountType")
+@Table(name="Account_Types")
 public class AccountType implements Serializable {
     @Id
     @SequenceGenerator(name="Generic_Sequence",allocationSize = 1)
@@ -32,6 +32,6 @@ public class AccountType implements Serializable {
     public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate) {
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
-        CreationDate = creationDate;
+        this.CreationDate = creationDate;
     }
 }
