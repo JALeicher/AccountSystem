@@ -23,12 +23,12 @@ public class Currency implements Serializable{
     private String currencySymbol;
 
     @Column(name = "Exchange_Rate")
-    private float exchangeRate;
+    private Float exchangeRate;
 
     public Currency() {
     }
 
-    public Currency(String currencyName, String currencySymbol, float exchangeRate) {
+    public Currency(String currencyName, String currencySymbol, Float exchangeRate) {
         this.currencyName = currencyName;
         this.currencySymbol = currencySymbol;
         this.exchangeRate = exchangeRate;

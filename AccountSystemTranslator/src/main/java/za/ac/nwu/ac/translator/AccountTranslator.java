@@ -9,4 +9,5 @@ import java.util.List;
 public interface AccountTranslator {
      AccountDto CreateAccount(AccountDto accountDto);
      List<AccountDto> GetAllAccounts();
+     AccountDto FetchById(Long id);
 }

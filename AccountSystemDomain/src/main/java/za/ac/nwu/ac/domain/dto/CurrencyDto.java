@@ -14,9 +14,9 @@ public class CurrencyDto implements Serializable {
 
     private String currencyName;
     private String currencySymbol;
-    private float exchangeRate;
+    private Float exchangeRate;
 
-    public CurrencyDto(String currencyName, String currencySymbol, float exchangeRate) {
+    public CurrencyDto(String currencyName, String currencySymbol, Float exchangeRate) {
         this.currencyName = currencyName;
         this.currencySymbol = currencySymbol;
         this.exchangeRate = exchangeRate;
@@ -67,11 +67,11 @@ public class CurrencyDto implements Serializable {
             example = "1.00",
             required = true)
 
-    public float getExchangeRate() {
+    public Float getExchangeRate() {
         return exchangeRate;
     }
 
-    public void setExchangeRate(float exchangeRate) {
+    public void setExchangeRate(Float exchangeRate) {
         this.exchangeRate = exchangeRate;
     }
 

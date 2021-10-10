@@ -41,4 +41,10 @@ public class AccountTranslatorImpl implements AccountTranslator {
         }
         return accountDtoList;
     }
+
+    @Override
+    public AccountDto FetchById(Long id) {
+        Account account = this.accountRepo.fetchAccountById(id);
+        return new AccountDto(account);
+    }
 }

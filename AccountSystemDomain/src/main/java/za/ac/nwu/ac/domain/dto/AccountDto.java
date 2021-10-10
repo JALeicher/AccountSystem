@@ -14,12 +14,14 @@ public class AccountDto {
     private String accountLName;
     private String accountEMail;
     private String accountCurrency;
+    private Float milesBalance;
 
-    public AccountDto(String accountFName, String accountLName, String accountEMail, String accountCurrency) {
+    public AccountDto(String accountFName, String accountLName, String accountEMail, String accountCurrency, Float milesBalance) {
         this.accountFName = accountFName;
         this.accountLName = accountLName;
         this.accountEMail = accountEMail;
         this.accountCurrency = accountCurrency;
+        this.milesBalance = milesBalance;
     }
 
     public AccountDto(Account account) {
@@ -27,6 +29,7 @@ public class AccountDto {
         this.setAccountLName(account.getAccountLName());
         this.setAccountEMail(account.getAccountEMail());
         this.setAccountCurrency(account.getAccountCurrency().getCurrencySymbol());
+        this.setMilesBalance(account.getMilesBalance());
     }
 
 
@@ -93,7 +96,23 @@ public class AccountDto {
 
     @JsonIgnore
     public Account BuildAccount(Currency currency){
-        return new Account(this.getAccountFName(),this.getAccountLName(),this.getAccountEMail(), currency);
+        return new Account(this.getAccountFName(),this.getAccountLName(),this.getAccountEMail(), currency, this.getMilesBalance());
+    }
+
+    @ApiModelProperty(position = 5,
+            value = "Miles_Balance",
+            name="Balance",
+            notes = "",
+            dataType = "java.lang.Float",
+            example = "550.00",
+            required = true,
+            allowEmptyValue = true)
+    public Float getMilesBalance() {
+        return milesBalance;
+    }
+
+    public void setMilesBalance(Float milesBalance) {
+        this.milesBalance = milesBalance;
     }
 
     @Override
@@ -103,6 +122,7 @@ public class AccountDto {
                 ", accountLName='" + accountLName + '\'' +
                 ", accountEMail='" + accountEMail + '\'' +
                 ", accountCurrency='" + accountCurrency + '\'' +
+                ", milesBalance=" + milesBalance +
                 '}';
     }
 }

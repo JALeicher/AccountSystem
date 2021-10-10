@@ -56,4 +56,25 @@ public class AccountController {
         Response<AccountDto> response = new Response<>(true,accountResponse);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
+
+    @GetMapping("{id}")
+    @ApiOperation(value = "Retrieves account based on id", notes = "returns account")
+    @ApiResponses(value={
+            @ApiResponse(code = 201, message = "Account returned", response = Response.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = Response.class),
+            @ApiResponse(code = 404, message = "Not found", response = Response.class),
+            @ApiResponse(code = 500, message = "Internal server error", response = Response.class)})
+    public ResponseEntity<Response<AccountDto>> FetchById(
+            @ApiParam(value = "Id for the account",
+                    example = "2",
+                    name="id",
+                    required = true)
+            @PathVariable("id")
+                    String id){
+        Long longId = Long.parseLong(id);
+        AccountDto accountDto = this.fetchAccountFlow.FetchById(longId);
+        Response<AccountDto> response = new Response<>(true,accountDto);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+
+    }
 }

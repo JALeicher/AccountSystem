@@ -21,4 +21,11 @@ public class FetchAccountFlowImpl implements FetchAccountFlow {
     public List<AccountDto> GetAllAccounts() {
         return this.accountTranslator.GetAllAccounts();
     }
+
+    @Override
+    public AccountDto FetchById(Long id) {
+        return this.accountTranslator.FetchById(id);
+    }
+
+
 }
