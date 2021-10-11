@@ -1,5 +1,7 @@
+za/ac/nwu/ac/translator/Impl/TransactionTranslatorImpl.class
+za/ac/nwu/ac/translator/TransactionTranslator.class
+za/ac/nwu/ac/translator/CurrencyTranslator.class
 za/ac/nwu/ac/translator/config/TranslatorConfig.class
 za/ac/nwu/ac/translator/AccountTranslator.class
 za/ac/nwu/ac/translator/Impl/CurrencyTranslatorImpl.class
 za/ac/nwu/ac/translator/Impl/AccountTranslatorImpl.class
-za/ac/nwu/ac/translator/CurrencyTranslator.class

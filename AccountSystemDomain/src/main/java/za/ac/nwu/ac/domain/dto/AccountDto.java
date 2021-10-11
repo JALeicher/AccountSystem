@@ -14,9 +14,9 @@ public class AccountDto {
     private String accountLName;
     private String accountEMail;
     private String accountCurrency;
-    private Float milesBalance;
+    private Integer milesBalance;
 
-    public AccountDto(String accountFName, String accountLName, String accountEMail, String accountCurrency, Float milesBalance) {
+    public AccountDto(String accountFName, String accountLName, String accountEMail, String accountCurrency, Integer milesBalance) {
         this.accountFName = accountFName;
         this.accountLName = accountLName;
         this.accountEMail = accountEMail;
@@ -78,7 +78,6 @@ public class AccountDto {
         this.accountEMail = accountEMail;
     }
 
-
     @ApiModelProperty(position = 4,
             value = "Account_Currency",
             name="Currency",
@@ -107,11 +106,11 @@ public class AccountDto {
             example = "550.00",
             required = true,
             allowEmptyValue = true)
-    public Float getMilesBalance() {
+    public Integer getMilesBalance() {
         return milesBalance;
     }
 
-    public void setMilesBalance(Float milesBalance) {
+    public void setMilesBalance(Integer milesBalance) {
         this.milesBalance = milesBalance;
     }
 

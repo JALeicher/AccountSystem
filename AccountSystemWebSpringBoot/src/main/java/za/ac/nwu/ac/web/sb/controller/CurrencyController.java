@@ -17,7 +17,7 @@ import za.ac.nwu.ac.logic.flow.FetchCurrencyFLow;
 import java.util.List;
 
 @RestController
-@RequestMapping("Currency")
+@RequestMapping("currency")
 public class CurrencyController {
     private final FetchCurrencyFLow fetchCurrencyFLow;
     private final CreateCurrencyFlow createCurrencyFlow;

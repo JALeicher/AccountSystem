@@ -2,8 +2,12 @@ za/ac/nwu/ac/logic/flow/CreateCurrencyFlow.class
 za/ac/nwu/ac/logic/flow/Impl/CreateAccountFlowImpl.class
 za/ac/nwu/ac/logic/flow/FetchCurrencyFLow.class
 za/ac/nwu/ac/logic/flow/Impl/CreateCurrencyFlowImpl.class
+za/ac/nwu/ac/logic/flow/EditAccountFlow.class
 za/ac/nwu/ac/logic/flow/Impl/FetchAccountFlowImpl.class
+za/ac/nwu/ac/logic/flow/FetchAccountFlow.class
+za/ac/nwu/ac/logic/flow/Impl/CreateTransactionFlowImpl.class
+za/ac/nwu/ac/logic/flow/Impl/EditAccountFlowImpl.class
 za/ac/nwu/ac/logic/config/LogicConfig.class
 za/ac/nwu/ac/logic/flow/Impl/FetchCurrencyFlowImpl.class
-za/ac/nwu/ac/logic/flow/FetchAccountFlow.class
+za/ac/nwu/ac/logic/flow/CreateTransactionFlow.class
 za/ac/nwu/ac/logic/flow/CreateAccountFlow.class

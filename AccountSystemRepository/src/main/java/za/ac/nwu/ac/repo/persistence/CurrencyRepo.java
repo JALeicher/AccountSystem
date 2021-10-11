@@ -7,6 +7,7 @@ import za.ac.nwu.ac.domain.persistence.Currency;
 
 @Repository
 public interface CurrencyRepo extends JpaRepository<Currency,Long> {
+
     @Query(value = "SELECT c FROM Currencies c WHERE c.currencySymbol = ?1")
     Currency fetchCurrencyBySymbol(String symbol);
 

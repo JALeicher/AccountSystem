@@ -8,4 +8,5 @@ import java.util.List;
 public interface FetchAccountFlow {
     AccountDto FetchById(Long id);
     List<AccountDto> GetAllAccounts();
+    AccountDto FetchByEMail(String mail);
 }

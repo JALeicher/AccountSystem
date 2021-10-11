@@ -1,24 +1,31 @@
 package za.ac.nwu.ac.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.Account;
 import za.ac.nwu.ac.domain.persistence.Transaction;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 
+
+@ApiModel(value = "Transaction",
+        description = "Data Transfer Object for Currency entity")
 public class TransactionDto {
 
-    private Long account;
+    private String account;
     private String transType;
     private String transDate;
-    private Float transAmount;
+    private Integer transAmount;
 
-    public TransactionDto() {
+    public TransactionDto(Transaction transaction) {
+        this.setAccount(transaction.getAccount().getAccountEMail());
+        this.setTransType(transaction.getTransType());
+        this.setTransDate(transaction.getTransDate().toString());
+        this.setTransAmount(transaction.getTransAmount());
     }
 
-    public TransactionDto(Long account, String transType, String transDate,Float transAmount) {
+    public TransactionDto(String account, String transType, String transDate,Integer transAmount) {
         this.account = account;
         this.transType = transType;
         this.transDate = transDate;
@@ -30,13 +37,13 @@ public class TransactionDto {
             name="Account Id",
             notes = "",
             dataType = "java.lang.Long",
-            example = "1",
+            example = "john.doe@gmaill.com",
             required = true)
-    public Long getAccount() {
+    public String getAccount() {
         return account;
     }
 
-    public void setAccount(Long account) {
+    public void setAccount(String account) {
         this.account = account;
     }
 
@@ -77,16 +84,33 @@ public class TransactionDto {
             dataType = "java.lang.Float",
             example = "500.00",
             required = true)
-    public Float getTransAmount() {
+    public Integer getTransAmount() {
         return transAmount;
     }
 
-    public void setTransAmount(Float transAmount) {
+    public void setTransAmount(Integer transAmount) {
         this.transAmount = transAmount;
     }
 
     @JsonIgnore
     public Transaction BuildTransaction(Account account){
-        return new Transaction(account,this.getTransType(),LocalDate.parse(this.getTransDate()),this.getTransAmount());
+        try {
+            Transaction trans = new Transaction(account,this.getTransType(),LocalDate.parse(this.getTransDate()),this.getTransAmount());
+            System.out.println("Built TransAction: "+trans.toString());
+            return trans ;
+        }
+        catch (RuntimeException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "TransactionDto{" +
+                "account=" + account +
+                ", transType='" + transType + '\'' +
+                ", transDate='" + transDate + '\'' +
+                ", transAmount=" + transAmount +
+                '}';
     }
 }

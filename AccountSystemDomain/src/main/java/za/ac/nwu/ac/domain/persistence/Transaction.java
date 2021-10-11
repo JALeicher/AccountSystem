@@ -20,7 +20,7 @@ public class Transaction implements Serializable{
     private Long transactionId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Account_Id",nullable = false)
+    @JoinColumn(name = "Transaction_Account",nullable = false)
     private Account account;
 
     @Column(name="Transaction_Type")
@@ -30,15 +30,26 @@ public class Transaction implements Serializable{
     private LocalDate transDate;
 
     @Column(name="Transaction_Amount")
-    private Float transAmount;
+    private Integer transAmount;
 
     public Transaction() {
     }
 
-    public Transaction(Account account, String transType, LocalDate transDate, Float transAmount) {
+    public Transaction(Account account, String transType, LocalDate transDate, Integer transAmount) {
         this.account = account;
         this.transType = transType;
         this.transDate = transDate;
-        this.transAmount =transAmount;
+        this.transAmount = transAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionId=" + transactionId +
+                ", account=" + account +
+                ", transType='" + transType + '\'' +
+                ", transDate='" + transDate + '\'' +
+                ", transAmount=" + transAmount +
+                '}';
     }
 }

@@ -27,5 +27,8 @@ public class FetchAccountFlowImpl implements FetchAccountFlow {
         return this.accountTranslator.FetchById(id);
     }
 
-
+    @Override
+    public AccountDto FetchByEMail(String mail) {
+        return this.accountTranslator.FetchByEMail(mail);
+    }
 }

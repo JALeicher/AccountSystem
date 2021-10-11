@@ -2,4 +2,6 @@
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/AccountTranslator.java
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/config/TranslatorConfig.java
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/Impl/AccountTranslatorImpl.java
+/Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/TransactionTranslator.java
 /Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/Impl/CurrencyTranslatorImpl.java
+/Users/master/Documents/GitHub/AccountSystem/AccountSystemTranslator/src/main/java/za/ac/nwu/ac/translator/Impl/TransactionTranslatorImpl.java

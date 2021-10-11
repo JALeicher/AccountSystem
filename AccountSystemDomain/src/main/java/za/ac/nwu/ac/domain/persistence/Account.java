@@ -32,12 +32,12 @@ public class Account implements Serializable{
     private Currency accountCurrency;
 
     @Column(name="Miles_Balance")
-    private Float milesBalance;
+    private Integer milesBalance;
 
     public Account() {
     }
 
-    public Account(String accountFName, String accountLName, String accountEMail, Currency accountCurrency, Float milesBalance) {
+    public Account(String accountFName, String accountLName, String accountEMail, Currency accountCurrency, Integer milesBalance) {
         this.accountFName = accountFName;
         this.accountLName = accountLName;
         this.accountEMail = accountEMail;

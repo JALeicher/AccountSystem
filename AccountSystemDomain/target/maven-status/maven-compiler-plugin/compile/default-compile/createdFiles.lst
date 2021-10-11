@@ -1,10 +1,6 @@
-za/ac/nwu/ac/domain/dto/RewardDto.class
-za/ac/nwu/ac/domain/persistence/Goal.class
 za/ac/nwu/ac/domain/dto/CurrencyDto.class
 za/ac/nwu/ac/domain/persistence/Account.class
 za/ac/nwu/ac/domain/service/Response.class
-za/ac/nwu/ac/domain/dto/GoalDto.class
-za/ac/nwu/ac/domain/persistence/Reward.class
 za/ac/nwu/ac/domain/dto/TransactionDto.class
 za/ac/nwu/ac/domain/persistence/Transaction.class
 za/ac/nwu/ac/domain/dto/AccountDto.class

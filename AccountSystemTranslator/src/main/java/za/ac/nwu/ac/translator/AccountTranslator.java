@@ -10,4 +10,7 @@ public interface AccountTranslator {
      AccountDto CreateAccount(AccountDto accountDto);
      List<AccountDto> GetAllAccounts();
      AccountDto FetchById(Long id);
+     AccountDto AddMiles(Long id,Integer amount);
+     AccountDto SubMiles(Long id, Integer amount);
+     AccountDto FetchByEMail(String mail);
 }
