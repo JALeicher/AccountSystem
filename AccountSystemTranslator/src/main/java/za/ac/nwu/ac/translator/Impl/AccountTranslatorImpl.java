@@ -1,6 +1,8 @@
 package za.ac.nwu.ac.translator.Impl;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountDto;
@@ -12,12 +14,15 @@ import za.ac.nwu.ac.repo.persistence.CurrencyRepo;
 import za.ac.nwu.ac.repo.persistence.TransactionRepo;
 import za.ac.nwu.ac.translator.AccountTranslator;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class AccountTranslatorImpl implements AccountTranslator {
+
+    Logger logger = LoggerFactory.getLogger(AccountTranslator.class);
 
     private final AccountRepo accountRepo;
     private final CurrencyRepo currencyRepo;
@@ -32,9 +37,15 @@ public class AccountTranslatorImpl implements AccountTranslator {
 
     @Override
     public AccountDto CreateAccount(AccountDto accountDto) {
-        Currency currency = currencyRepo.fetchCurrencyBySymbol(accountDto.getAccountCurrency());
-        Account account = this.accountRepo.save(accountDto.BuildAccount(currency));
-        return new AccountDto(account);
+        try{
+            Currency currency = currencyRepo.fetchCurrencyBySymbol(accountDto.getAccountCurrency());
+            Account account = this.accountRepo.save(accountDto.BuildAccount(currency));
+            return new AccountDto(account);
+        }catch (Exception e){
+            logger.error("Failed to create new account :(");
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -60,19 +71,33 @@ public class AccountTranslatorImpl implements AccountTranslator {
 
     @Override
     public AccountDto AddMiles(Long id,Integer amount) {
-        this.accountRepo.addMilesToAccount(id,amount);
-        Account account = accountRepo.fetchAccountById(id);
-        String type ="ADD";
-        Transaction transaction = transactionRepo.save(new Transaction(account,type,LocalDate.now(),amount));
-        return new AccountDto(account);
+        try{
+            this.accountRepo.addMilesToAccount(id,amount);
+            Account account = accountRepo.fetchAccountById(id);
+            String type ="ADD";
+            Transaction transaction = transactionRepo.save(new Transaction(account,type,LocalDate.now(),amount));
+            return new AccountDto(account);
+        }
+        catch (Exception e){
+            logger.error("Failed to add miles to account");
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
     public AccountDto SubMiles(Long id, Integer amount) {
-        this.accountRepo.subMilesFromAccount(id,amount);
-        Account account = accountRepo.fetchAccountById(id);
-        String type ="SUB";
-        Transaction transaction = transactionRepo.save(new Transaction(account,type,LocalDate.now(),amount));
-        return new AccountDto(account);
+        try {
+            this.accountRepo.subMilesFromAccount(id,amount);
+            Account account = accountRepo.fetchAccountById(id);
+            String type ="SUB";
+            Transaction transaction = transactionRepo.save(new Transaction(account,type,LocalDate.now(),amount));
+            return new AccountDto(account);
+        }
+        catch (Exception e){
+            logger.error("Failed to subtract miles from account");
+            throw new RuntimeException(e);
+        }
+
     }
 }

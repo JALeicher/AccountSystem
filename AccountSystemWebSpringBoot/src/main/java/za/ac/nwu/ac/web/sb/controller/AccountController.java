@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import za.ac.nwu.ac.domain.service.Response;
@@ -19,6 +21,8 @@ import java.util.List;
 @RestController
 @RequestMapping("account")
 public class AccountController {
+
+    Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     private final CreateAccountFlow createAccountFlow;
     private final FetchAccountFlow fetchAccountFlow;
@@ -55,6 +59,7 @@ public class AccountController {
             @ApiParam(value = "RequestBody to create new account", required = true)
             @RequestBody AccountDto accountDto){
         AccountDto accountResponse = createAccountFlow.CreateAccount(accountDto);
+        logger.trace("NEW Account added with email: "+accountResponse.getAccountEMail());
         Response<AccountDto> response = new Response<>(true,accountResponse);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }
@@ -112,6 +117,7 @@ public class AccountController {
         Long longId= Long.parseLong(id);
         Integer intAmount = Integer.parseInt(amount);
         AccountDto accountDto = editAccountFlow.AddMiles(longId,intAmount) ;
+        logger.trace(accountDto.getAccountFName()+" just added "+intAmount+" MILES");
         Response<AccountDto> response = new Response<>(true,accountDto);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
@@ -131,6 +137,7 @@ public class AccountController {
         Long longId= Long.parseLong(id);
         Integer intAmount = Integer.parseInt(amount);
         AccountDto accountDto = editAccountFlow.SubMiles(longId,intAmount) ;
+        logger.trace(accountDto.getAccountFName()+" just subtracted "+intAmount+" MILES");
         Response<AccountDto> response = new Response<>(true,accountDto);
         return new ResponseEntity<>(response,HttpStatus.OK);
     }

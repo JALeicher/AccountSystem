@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,8 @@ import java.util.List;
 public class CurrencyController {
     private final FetchCurrencyFLow fetchCurrencyFLow;
     private final CreateCurrencyFlow createCurrencyFlow;
+
+    Logger logger = LoggerFactory.getLogger(CurrencyController.class);
 
     @Autowired
     public CurrencyController(FetchCurrencyFLow fetchCurrencyFLow, CreateAccountFlow createAccountFlow, CreateCurrencyFlow createCurrencyFlow) {
@@ -52,6 +56,7 @@ public class CurrencyController {
             @ApiParam(value = "RequestBody to create new Currency", required = true)
             @RequestBody CurrencyDto currencyDto){
         CurrencyDto currencyResponse = createCurrencyFlow.CreateCurrency(currencyDto);
+        logger.trace("Created new currency name: "+currencyResponse.getCurrencyName()+" worth "+currencyResponse.getExchangeRate()+" MILES");
         Response<CurrencyDto> response = new Response<>(true,currencyResponse);
         return new ResponseEntity<>(response,HttpStatus.CREATED);
     }

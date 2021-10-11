@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.translator.Impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.CurrencyDto;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Component
 public class CurrencyTranslatorImpl implements CurrencyTranslator {
+
+    Logger logger = LoggerFactory.getLogger(CurrencyTranslator.class);
 
     private CurrencyRepo currencyRepo;
 
@@ -34,8 +38,9 @@ public class CurrencyTranslatorImpl implements CurrencyTranslator {
         try {
             Currency currency = currencyRepo.save(currencyDto.getCurrency());
             return new CurrencyDto(currency);
-        }catch (Exception E){
-            throw new RuntimeException("Couldn't add currency");
+        }catch (Exception e){
+            logger.error("Failed to create new currency");
+            throw new RuntimeException(e);
         }
     }
 
@@ -44,8 +49,8 @@ public class CurrencyTranslatorImpl implements CurrencyTranslator {
         try {
             CurrencyDto currencyDto = new CurrencyDto(this.currencyRepo.fetchCurrencyBySymbol(symbol));
             return currencyDto;
-        }catch (Exception E){
-            throw new RuntimeException("Couldn't retrieve currency");
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
     }
 }
