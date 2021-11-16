@@ -1,0 +1,4 @@
+za/ac/nwu/ac/repo/config/RepoConfig.class
+za/ac/nwu/ac/repo/persistence/AccountRepo.class
+za/ac/nwu/ac/repo/persistence/TransactionRepo.class
+za/ac/nwu/ac/repo/persistence/CurrencyRepo.class

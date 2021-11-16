@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.3.12.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -21,15 +21,15 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
-        <swagger.version>1.5.20</swagger.version>
+        <swagger.version>1.6.2</swagger.version>
     </properties>
 
     <modules>
         <module>AccountSystemDomain</module>
         <module>AccountSystemLogic</module>
-        <module>AccountSystemRepository</module>
         <module>AccountSystemTranslator</module>
         <module>AccountSystemWebSpringBoot</module>
+        <module>AccountSystemRepository</module>
     </modules>
 
     <dependencyManagement>
@@ -70,7 +70,10 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

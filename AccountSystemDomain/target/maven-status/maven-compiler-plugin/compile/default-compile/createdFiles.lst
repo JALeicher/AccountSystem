@@ -1,0 +1,7 @@
+za/ac/nwu/ac/domain/dto/CurrencyDto.class
+za/ac/nwu/ac/domain/persistence/Account.class
+za/ac/nwu/ac/domain/service/Response.class
+za/ac/nwu/ac/domain/dto/TransactionDto.class
+za/ac/nwu/ac/domain/persistence/Transaction.class
+za/ac/nwu/ac/domain/dto/AccountDto.class
+za/ac/nwu/ac/domain/persistence/Currency.class
